@@ -1,0 +1,31 @@
+version: "3"
+
+services:
+  backend:
+    build:
+      dockerfile: Dockerfile
+      context: ./
+    volumes:
+      - /app/node_modules
+      - ./:/app
+    ports: 
+      - 5000:5000 
+    depends_on:
+      - mongodb_container      
+    environment:
+      DATABASE_URL: mongodb://mongodb_container:27017/garrison
+      SMTP_USER: ${SMTP_USER}
+      SMTP_PASS: ${SMTP_PASS}
+      VIRTUAL_HOST: ${VIRTUAL_HOST}
+      HCAPTCHA_HOST: ${HCAPTCHA_HOST}
+      GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID}
+
+  mongodb_container:
+    image: mongo:latest
+    ports:
+      - 27017:27017
+    volumes:
+      - mongodb_data_container:/data/db
+
+volumes:
+  mongodb_data_container:
