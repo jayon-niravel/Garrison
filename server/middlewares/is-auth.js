@@ -13,11 +13,11 @@ exports.isAuth = async (req, res, next) => {
       throw error;
     }
     const token = authHeader.split(' ')[1];
+    console.log("JWKS", JWKS)
     const { payload } = await jwtVerify(token, JWKS, {
       issuer: 'wmtech',
       audience: 'auth.wmtech.cc'
     });
-
     if (!payload) {
       const error = new Error('Not authenticated.');
       error.statusCode = 401;
@@ -26,6 +26,7 @@ exports.isAuth = async (req, res, next) => {
     req.userId = payload['userId'];
     next();
   } catch (err) {
+    console.log("err", err);
     if(!err.statusCode){
       err.statusCode = 500;
     }

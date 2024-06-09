@@ -7,7 +7,7 @@ const {
 
 const User = require('../models/user');
 const authController = require('../controllers/auth');
-const { isAuth } = require('../middlewares/is-auth');
+
 
 const router = express.Router();
 
@@ -69,6 +69,7 @@ router.post('/sign_in', [
 ], authController.signInWithEmailPassword, authController.handleSignIn);
 
 
+router.get('/publicKey', authController.getPublicKey);
 
 router.post('/refreshToken', [
   body('accessToken')

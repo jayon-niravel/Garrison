@@ -176,3 +176,16 @@ exports.refreshToken = async (req, res, next) => {
     next(err);
   }
 };
+
+exports.getPublicKey = async (req, res, next) => {
+  try {
+    const keyPath = path.join(__dirname, '..', '.public', 'keys.json');
+    const publicKeys = JSON.parse((await fs.readFile(keyPath)).toString());
+    res.status(200).json({ keys: publicKeys });
+  } catch (err) {
+    if (!err.statusCode) {
+      err.statusCode = 500;
+    }
+    next(err);
+  }
+};
