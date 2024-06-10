@@ -8,8 +8,8 @@ const Signup = lazy(() => import('./signup/signup'));
 export default function LandingRoutes() {
   return (
         <Routes >
-                    <Route path="/" element={<Signin />} />
-                    <Route path="/signup" element={<Signup />} />;
+                    <Route path="/" element={<Signup />} />
+                    <Route path="/signup" element={<Signin />} />;
         </Routes>
   );
 }
