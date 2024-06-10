@@ -95,7 +95,7 @@ exports.deleteScheduler = async(req, res, next) => {
 /*
 * List AWS Scheduler
 */
-exports.getScheduler = async(req, res, next) => {
+exports.listScheduler = async(req, res, next) => {
     try {
         const errors = validationResult(req);
         if (!errors.isEmpty()) {

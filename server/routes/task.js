@@ -7,9 +7,9 @@ const {
 const router = express.Router();
 
 
-router.get('/list', isAuth, schedulerController.getScheduler);
+router.get('/list', isAuth, schedulerController.listScheduler);
 
-router.get('/get',  [
+router.post('/get',  [
   body('name')
     .notEmpty()
     .trim()   
