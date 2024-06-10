@@ -27,7 +27,7 @@ export default function Signup() {
       setIsSubmitting(false);
       if(error) {
       } else {
-        navigate('/');
+        navigate('/signin');
       }
 
     }

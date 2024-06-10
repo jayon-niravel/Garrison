@@ -9,7 +9,7 @@ export default function LandingRoutes() {
   return (
         <Routes >
                     <Route path="/" element={<Signup />} />
-                    <Route path="/signup" element={<Signin />} />;
+                    <Route path="/signin" element={<Signin />} />;
         </Routes>
   );
 }
